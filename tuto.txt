@@ -1,0 +1,2 @@
+https://bluuweb.github.io/node/07-jwt/#registro backend
+https://www.positronx.io/angular-jwt-user-authentication-tutorial/ frontend
