@@ -20,7 +20,7 @@ const routes=require("./routes/routes");
 const verifytoken=require("./controllers/tokenv")
 // route middlewares
 app.use("/api",routes);
-//app.use("/api/dash",verifytoken,routes)
+
 
 
 // iniciar server
@@ -29,4 +29,4 @@ app.listen(PORT, () => {
     console.log(`servidor andando en: ${PORT}`)
 })
 
-//app.use("/api",routes)
+

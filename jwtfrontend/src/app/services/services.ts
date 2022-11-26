@@ -1,6 +1,7 @@
 import { HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @Injectable({
@@ -9,7 +10,7 @@ import { Observable } from 'rxjs';
 export class RequestService {
 public url:string
 
-  constructor(public _http:HttpClient) {
+  constructor(private _http:HttpClient,private cookies:CookieService) {
     this.url="http://localhost:3000/api";
 
    }
@@ -21,5 +22,20 @@ public url:string
    }
    Signin(signData:any):Observable<any>{
     return this._http.post(this.url+"/login",signData)
+   }
+   setToken(token:string){
+    this.cookies.set("auth-token",token);
+   }
+   getToken(){
+    return this.cookies.get("auth-token");
+   }
+   deleteCookie(){
+    return this.cookies.delete('auth-token');
+   }
+   checkCookie(){
+    return this.cookies.check("auth-token");
+   }
+   getDash(headers:any){
+    return this._http.get(this.url+"/dash",{headers});
    }
 }

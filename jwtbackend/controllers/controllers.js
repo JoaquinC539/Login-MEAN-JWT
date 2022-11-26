@@ -54,11 +54,11 @@ const controller={
         if(!validPassword){return res.status(400).json({error:"La contraseña no es valida o correcta"})}
         console.log("2.Datos verificados")
         const token=jwt.sign({
-            name:user.name,
+            name: user.name,
             id:user._id,
             email:user.email
 
-        },process.env.TOKEN)
+        },process.env.TOKEN,{expiresIn:"15min"})
         console.log("3.Token firmado generado con datos de nombre y usuario");
         return res.header('auth-token',token).json({
             error:null,

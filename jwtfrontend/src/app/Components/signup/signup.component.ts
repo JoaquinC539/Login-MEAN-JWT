@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RequestService } from 'src/app/services/services';
 import { Router } from '@angular/router';
-//import { CookieService } from 'ngx-cookie-service/public-api';
+
 
 @Component({
   selector: 'app-signup',
@@ -23,9 +23,9 @@ export class SignupComponent implements OnInit {
   signin(){
     this.signindata={email:this.email,password:this.password}
     let sigin=this._http.Signin(this.signindata).subscribe(
-    res=>{if(res.data.token!=-1){console.log(res);this.error="";this.email="";this.password="";
-
-    /*this.router.navigateByUrl('/dash')*/
+    res=>{if(res.data.token!=-1){this.error="";this.email="";this.password="";
+      this._http.setToken(res.data.token);
+      this.router.navigateByUrl('/dash');
          }
       },
       err=>{this.error="",this.error=(err.error.error)}
