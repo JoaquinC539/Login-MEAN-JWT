@@ -1,0 +1,28 @@
+<button (click)="workapi()">Api funcionando</button>
+<form (ngSubmit)="login()" #loginForm="ngForm">
+  <fieldset>
+      <legend>Crea una cuenta</legend>
+      <div class="form-field">
+        <label for="fullname">Nombre completo:</label>
+        <input name="fullname" type="text" name="ngModel" [(ngModel)]="name" required="required"  >
+    </div>
+      <div class="form-field">
+          <label for="email">Email:</label>
+          <input name="email" type="text" email="ngModel" [(ngModel)]="email" required="required" >
+      </div>
+      <div class="form-field">
+          <label>Password:</label>
+          <input name="password"  type="password" password="ngModel" [(ngModel)]="password" required="required" >
+      </div>
+  </fieldset>
+  <span *ngIf="success">{{success}}</span>
+  <span *ngIf="error">Error: {{this.error}}</span>
+
+  <div class="form-buttons">
+      <button type="submit">Crear cuenta</button>
+  </div>
+  </form>
+  Ya tienes cuenta?<br>
+entra aqui:
+<button><a [routerLink]="['/signup']">Login</a></button>
+

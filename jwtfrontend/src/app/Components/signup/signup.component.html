@@ -1,0 +1,17 @@
+<form (ngSubmit)="signin()" #loginForm="ngForm">
+  <fieldset>
+      <legend>Entra a tu cuenta</legend>
+      <div class="form-field">
+          <label for="email">Email:</label>
+          <input name="email" type="text" email="ngModel" [(ngModel)]="email" required="required" >
+      </div>
+      <div class="form-field">
+          <label>Password:</label>
+          <input name="password"  type="password" password="ngModel" [(ngModel)]="password" required="required">
+      </div>
+  </fieldset>
+<span *ngIf="error">{{error}}</span>
+  <div  class="form-buttons">
+      <button type="submit">Entrar</button>
+  </div>
+  </form>

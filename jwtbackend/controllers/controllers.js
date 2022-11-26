@@ -66,15 +66,16 @@ const controller={
         })   
     },
     dash: async function(req,res){
-        console.log("7.Por los headers de GET, se pasa el token como peticion(request) con la información dentro");
+        console.log("7.Por metodo GET dentro de los headers, autoriza los metodos");
+        console.log("8. Por medio de la autorización se pueden usar otros metodos protegidos por jwt");
         res.json({
             error:null,
             data:{
                 title:"Ruta protegida",
                 user:req.user
-            }
+            },
+            message:"Autorizado para otros metodos del backend"
         })
-        console.log("8.Envia los datos almacenados en el token",req.user)
     }
 }
 
