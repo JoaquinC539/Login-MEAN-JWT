@@ -50,5 +50,8 @@ public url:string
    changeStatus(headers:any,statuschange:any){
     return this._http.put(this.url+"/updateticket",statuschange,{headers})
    }
+   deleteTicket(headers:any,id:any){
+    return this._http.post(this.url+"/deleteticket",id,{headers})
+   }
 
 }

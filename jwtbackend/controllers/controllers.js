@@ -78,8 +78,7 @@ const controller={
     getTickets: async function(req,res){
         await TicketModel.find().exec((err,results)=>{
             if(err) {return status(500).send({message:"Error en los datos"})}
-            return res.status(200).send({results})
-            
+            return res.status(200).send({results})            
         })
     },
     newTicket:async function(req,res){
@@ -88,7 +87,6 @@ const controller={
         if(error){
             return res.status(400).json({error:error.details[0].message});
         }
-        console.log("Verificación aprobada")
         //Make new service ticket
         const Ticket=new TicketModel({
             author:req.user.name,
@@ -121,13 +119,13 @@ const controller={
     deleteTicket: async function(req,res){
         try{
             await TicketModel.findByIdAndDelete(req.body._id,(err,sucess)=>{
-                if(err){return res.status(500).send({message:"Error en la petición",err})};
+                if(err){return res.status(500).send({message:"Ticket no encontrado"})};
                 if(!sucess){return res.status(404).send({message:"Metodo no encontrado"})};
                 return res.status(200).json({
                     status:"Ticket eliminado"
                 })     
             })
-        }catch{(err)=>{console.log(err)}}
+        }catch{(err)=>{return res.json({status:err})}}
     }
 }
 

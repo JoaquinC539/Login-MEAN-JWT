@@ -18,6 +18,7 @@ Tickets de servicios<hr>
     <td [ngClass]="{'done':ticket.status==true,'pending':ticket.status==false}">{{ticket.status}}</td>
     <td>{{ticket.comments}}</td>
     <td><button (click)="changeStatus(ticket._id,ticket.status)">Cambiar estado</button></td>
+    <td><button (click)="deleteTicket(ticket._id)">Eliminar ticket</button></td>
   </tr>
 
 </table><br>

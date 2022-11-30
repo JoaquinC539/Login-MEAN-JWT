@@ -10,5 +10,5 @@ router.get("/dash",verifyToken,controller.dash);
 router.get("/tickets",verifyToken,controller.getTickets);
 router.post("/pticket",verifyToken,controller.newTicket);
 router.put("/updateticket",verifyToken,controller.updateTicket);
-router.delete("/deleteticket",verifyToken,controller.deleteTicket);
+router.post("/deleteticket",verifyToken,controller.deleteTicket);
 module.exports = router;

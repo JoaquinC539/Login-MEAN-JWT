@@ -69,4 +69,12 @@ export class ProfileComponent implements OnInit {
       err=>{console.log(err)}
     )
   }
+  deleteTicket(id:string){
+    let idformat={_id:id}
+      this.http.deleteTicket(this.headers,idformat).subscribe(
+        res=>{this.getServiceTickets()},
+        err=>{console.log(err)}
+      )
+    this.getServiceTickets()
+  }
 }
