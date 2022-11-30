@@ -4,24 +4,23 @@
 <button (click)="logout()">logout</button><hr>
 
 Tickets de servicios<hr>
-
 <table >
   <tr>
     <th>Nombre</th>
     <th>Trabajo</th>
     <th>Estado</th>
     <th>Comentarios</th>
+    <th>Opciones</th>
   </tr>
   <tr *ngFor="let ticket of serviceTickets">
     <td>{{ticket.author}}</td>
     <td>{{ticket.work}}</td>
     <td [ngClass]="{'done':ticket.status==true,'pending':ticket.status==false}">{{ticket.status}}</td>
     <td>{{ticket.comments}}</td>
-    <td><button (click)="changeStatus(ticket._id,ticket.status)">Cambiar estado</button></td>
-    <td><button (click)="deleteTicket(ticket._id)">Eliminar ticket</button></td>
+    <td><button (click)="changeStatus(ticket._id,ticket.status)">Cambiar estado</button>
+      <button (click)="deleteTicket(ticket._id)">Eliminar ticket</button></td>
   </tr>
-
-</table><br>
+</table><hr>
 <div>
   <form (ngSubmit)="newTicket(); ticketForm.reset()" #ticketForm="ngForm">
     <fieldset>

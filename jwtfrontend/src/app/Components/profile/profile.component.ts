@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RequestService } from 'src/app/services/services';
 import { Router } from '@angular/router';
 import { Ticket } from 'src/app/models/ticket';
