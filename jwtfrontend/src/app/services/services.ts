@@ -35,7 +35,20 @@ public url:string
    checkCookie(){
     return this.cookies.check("auth-token");
    }
-   getDash(headers:any){
+   getDash(headers:any):Observable<any>{
     return this._http.get(this.url+"/dash",{headers});
    }
+   testPost(headers:any):Observable<any>{
+    return this._http.post(this.url+"/testpost",null,{headers});
+   }
+   gettickets(headers:any):Observable<any>{
+    return this._http.get(this.url+"/tickets",{headers})
+   }
+   newTicket(headers:any,ticketbody:any):Observable<any>{
+    return this._http.post(this.url+"/pticket",ticketbody,{headers})
+   }
+   changeStatus(headers:any,statuschange:any){
+    return this._http.put(this.url+"/updateticket",statuschange,{headers})
+   }
+
 }

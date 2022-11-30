@@ -1,2 +1,48 @@
-<p>profile works!</p>
-<button (click)="logout()">logout</button>
+
+<h1>Bienvenid@ {{name}}</h1>
+
+<button (click)="logout()">logout</button><hr>
+
+Tickets de servicios<hr>
+
+<table >
+  <tr>
+    <th>Nombre</th>
+    <th>Trabajo</th>
+    <th>Estado</th>
+    <th>Comentarios</th>
+  </tr>
+  <tr *ngFor="let ticket of serviceTickets">
+    <td>{{ticket.author}}</td>
+    <td>{{ticket.work}}</td>
+    <td [ngClass]="{'done':ticket.status==true,'pending':ticket.status==false}">{{ticket.status}}</td>
+    <td>{{ticket.comments}}</td>
+    <td><button (click)="changeStatus(ticket._id,ticket.status)">Cambiar estado</button></td>
+  </tr>
+
+</table><br>
+<div>
+  <form (ngSubmit)="newTicket(); ticketForm.reset()" #ticketForm="ngForm">
+    <fieldset>
+        <legend>Nuevo ticket</legend>
+        <div class="form-field">
+          <label for="work">Trabajo:</label>
+          <input  type="text" name="work" [(ngModel)]="work" required="required"  >
+      </div>
+        <div class="form-field">
+            <label for="email">status:</label>
+            <select name="status" id="" [(ngModel)]="status">
+              <option value=true>Completo</option>
+              <option value=false>Pendiente</option>
+            </select>
+        </div>
+        <div class="form-field">
+            <label>Comentarios:</label>
+            <input name="comments"  type="text" comments="ngModel" [(ngModel)]="comments" required="required" >
+        </div>
+    </fieldset>
+    <div class="form-buttons">
+        <button type="submit">Crear ticket</button>
+    </div>
+    </form>
+</div>
